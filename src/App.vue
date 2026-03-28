@@ -38,7 +38,13 @@ type Project = {
   highlights: string[]
   visualTitle?: string
   visualItems?: string[]
+  storeLinks?: {
+    label: string
+    image: string
+    href: string
+  }[]
   link?: string
+  showHeaderLink?: boolean
   accent?: boolean
 }
 
@@ -131,9 +137,21 @@ const projects: Project[] = [
       '以 Vue 2、Vue 3 串接後端 API，處理交易流程中的互動、驗證與操作清晰度。',
       '支援 Nginx 反向代理與 SSL/TLS 憑證配置，具備金融服務前端正式上線的維運視角。',
     ],
-    visualTitle: 'Live Banking Delivery',
-    visualItems: ['交易流程設計', 'Vue 前端開發', '正式環境維運'],
+    visualTitle: '公開商店連結',
+    storeLinks: [
+      {
+        label: 'App Store',
+        image: '/images/app_store.png',
+        href: 'https://apps.apple.com/tw/app/%E8%81%AF%E9%82%A6%E8%A1%8C%E5%8B%95%E9%8A%80%E8%A1%8C/id1537067533',
+      },
+      {
+        label: 'Google Play',
+        image: '/images/google_play.png',
+        href: 'https://play.google.com/store/apps/details?id=wbank.ubot.com.tw&hl=zh_TW',
+      },
+    ],
     link: 'https://apps.apple.com/tw/app/%E8%81%AF%E9%82%A6%E8%A1%8C%E5%8B%95%E9%8A%80%E8%A1%8C/id1537067533',
+    showHeaderLink: false,
     accent: true,
   },
   {
@@ -288,11 +306,21 @@ onUnmounted(() => {
       <section id="hero" class="hero section">
         <div class="hero__content" data-reveal>
           <p class="eyebrow">Front-End Web Developer / Financial IT</p>
-          <h1>把金融服務的穩定性與前端體驗，一起做到上線等級。</h1>
-          <p class="hero__summary">
-            我是林佳勳，現任職於聯邦銀行，專注於行動銀行前端開發與維運。熟悉
-            Vue 2、Vue 3、TypeScript、Nginx 與 SSL/TLS，能從產品需求、UI 邏輯、API 串接到部署上線，完整推進金融服務前端交付。
-          </p>
+          <div class="hero__headline">
+            <h1>金融 IT 前端工程師</h1>
+            <p class="hero__lede">專注行動銀行開發、交易流程優化與正式環境維運</p>
+          </div>
+
+          <div class="hero__highlights">
+            <span>聯邦銀行</span>
+            <span>Vue / TypeScript</span>
+            <span>Nginx / SSL</span>
+          </div>
+
+          <div class="hero__summary-grid">
+            <p class="hero__summary">現任聯邦銀行前端工程師，主要投入行動銀行前端開發與正式環境維運。</p>
+            <p class="hero__summary">熟悉 Vue、TypeScript、Nginx 與 SSL/TLS，能從需求到上線完整推進交付。</p>
+          </div>
 
           <div class="hero__actions">
             <a class="button button--primary" href="#portfolio">查看重點作品</a>
@@ -316,25 +344,14 @@ onUnmounted(() => {
             </div>
 
             <div class="profile-card__body">
-              <p class="profile-card__title">Current Focus</p>
-              <h2>聯邦銀行 行動銀行前端工程師</h2>
+              <p class="profile-card__title">Profile Snapshot</p>
+              <h2>林佳勳</h2>
               <ul class="profile-card__list">
-                <li>Vue 2 / Vue 3 實務開發</li>
-                <li>交易流程與正式環境維運</li>
-                <li>Nginx、SSL/TLS 佈署</li>
+                <li>現職：聯邦銀行前端工程師</li>
+                <li>聚焦：行動銀行與金融服務前端</li>
+                <li>能力：Vue、部署維運、跨部門協作</li>
               </ul>
             </div>
-          </div>
-
-          <div class="store-panel">
-            <a class="store-link" href="https://apps.apple.com/tw/app/%E8%81%AF%E9%82%A6%E8%A1%8C%E5%8B%95%E9%8A%80%E8%A1%8C/id1537067533" target="_blank" rel="noreferrer">
-              <img src="/images/app_store.png" alt="App Store QR Code" />
-              <span>App Store</span>
-            </a>
-            <a class="store-link" href="https://play.google.com/store/apps/details?id=wbank.ubot.com.tw&hl=zh_TW" target="_blank" rel="noreferrer">
-              <img src="/images/google_play.png" alt="Google Play QR Code" />
-              <span>Google Play</span>
-            </a>
           </div>
         </div>
       </section>
@@ -350,7 +367,7 @@ onUnmounted(() => {
       <section id="finance" class="section">
         <div class="section-heading" data-reveal>
           <p class="eyebrow">Financial IT Strength</p>
-          <h2>不只是會做畫面，而是能理解金融服務真正上線時的限制與責任。</h2>
+          <h2>金融服務上線思維</h2>
         </div>
 
         <div class="signal-grid">
@@ -365,7 +382,7 @@ onUnmounted(() => {
       <section id="experience" class="section section--split">
         <div class="section-heading" data-reveal>
           <p class="eyebrow">Experience</p>
-          <h2>以正式上線金融產品為主軸，累積從開發到維運的完整履歷。</h2>
+          <h2>正式環境開發經歷</h2>
         </div>
 
         <div class="timeline">
@@ -387,9 +404,9 @@ onUnmounted(() => {
       </section>
 
       <section id="skills" class="section">
-        <div class="section-heading" data-reveal>
+        <div class="section-heading section-heading--compact" data-reveal>
           <p class="eyebrow">Skills & Certifications</p>
-          <h2>以 Vue 為核心，並延伸到金融領域常見的部署、安全與跨部門協作能力。</h2>
+          <h2>Vue 技術與金融 IT 協作能力</h2>
         </div>
 
         <div class="skills-layout">
@@ -415,7 +432,7 @@ onUnmounted(() => {
       <section id="portfolio" class="section">
         <div class="section-heading" data-reveal>
           <p class="eyebrow">Portfolio</p>
-          <h2>以金融專案為核心亮點，延伸展示多種互動與產品型專案經驗。</h2>
+          <h2>重點作品</h2>
         </div>
 
         <div class="portfolio-grid">
@@ -430,17 +447,32 @@ onUnmounted(() => {
               <img :src="project.image" :alt="project.title" />
             </div>
             <div v-else class="project-card__visual">
-              <p class="project-card__visual-label">Financial Product Case</p>
-              <h4>{{ project.visualTitle }}</h4>
-              <div class="project-card__visual-grid">
-                <span v-for="item in project.visualItems" :key="item">{{ item }}</span>
+              <div v-if="project.storeLinks?.length" class="project-card__qr-grid">
+                <a
+                  v-for="store in project.storeLinks"
+                  :key="store.label"
+                  :href="store.href"
+                  class="project-card__qr-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img :src="store.image" :alt="`${store.label} QR Code`" />
+                  <span>{{ store.label }}</span>
+                </a>
               </div>
+              <template v-else>
+                <p class="project-card__visual-label">Financial Product Case</p>
+                <h4>{{ project.visualTitle }}</h4>
+                <div class="project-card__visual-grid">
+                <span v-for="item in project.visualItems" :key="item">{{ item }}</span>
+                </div>
+              </template>
             </div>
 
             <div class="project-card__body">
               <div class="project-card__header">
                 <h3>{{ project.title }}</h3>
-                <a v-if="project.link" :href="project.link" target="_blank" rel="noreferrer">Open</a>
+                <a v-if="project.link && project.showHeaderLink !== false" :href="project.link" target="_blank" rel="noreferrer">Open</a>
               </div>
 
               <p>{{ project.description }}</p>
