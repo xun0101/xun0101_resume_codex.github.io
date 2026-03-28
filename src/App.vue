@@ -304,6 +304,24 @@ onUnmounted(() => {
 
     <main>
       <section id="hero" class="hero section">
+        <div class="hero__visual" data-reveal>
+          <div class="profile-card">
+            <div class="profile-card__frame">
+              <img src="/images/avatar.jpg" alt="林佳勳大頭照" />
+            </div>
+
+            <div class="profile-card__body">
+              <p class="profile-card__title">Profile Snapshot</p>
+              <h2>林佳勳</h2>
+              <ul class="profile-card__list">
+                <li>現職：聯邦銀行前端工程師</li>
+                <li>聚焦：行動銀行與金融服務前端</li>
+                <li>能力：Vue、部署維運、跨部門協作</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div class="hero__content" data-reveal>
           <p class="eyebrow">Front-End Web Developer / Financial IT</p>
           <div class="hero__headline">
@@ -334,24 +352,6 @@ onUnmounted(() => {
               <strong>{{ stat.value }}</strong>
               <span>{{ stat.label }}</span>
             </article>
-          </div>
-        </div>
-
-        <div class="hero__visual" data-reveal>
-          <div class="profile-card">
-            <div class="profile-card__frame">
-              <img src="/images/avatar.jpg" alt="林佳勳大頭照" />
-            </div>
-
-            <div class="profile-card__body">
-              <p class="profile-card__title">Profile Snapshot</p>
-              <h2>林佳勳</h2>
-              <ul class="profile-card__list">
-                <li>現職：聯邦銀行前端工程師</li>
-                <li>聚焦：行動銀行與金融服務前端</li>
-                <li>能力：Vue、部署維運、跨部門協作</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
